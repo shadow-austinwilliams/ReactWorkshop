@@ -1,0 +1,36 @@
+.App {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  font-size: 24px;
+  margin-bottom: 48px;
+}
+
+.products-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  row-gap: 48px;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-img {
+  object-fit: cover;
+  height: 250px;
+  width: 250px;
+  margin-bottom: 12px;
+}
