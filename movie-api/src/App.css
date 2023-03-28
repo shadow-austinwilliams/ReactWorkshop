@@ -1,0 +1,13 @@
+body {
+  background-color: black;
+  color: white
+}
+
+.App {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+h1 {
+  color: #E50914
+}
