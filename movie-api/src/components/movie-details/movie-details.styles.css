@@ -1,0 +1,38 @@
+.movie-details-container {
+  display: flex;
+  align-items: center;
+}
+
+.movie-details {
+  position: absolute;
+  width: 20%;
+  padding-left: 32px;
+}
+
+.movie-title {
+  font-size: 48px;
+  margin: 0 0 16px 0;
+}
+
+.movie-data {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.movie-details-cast-members {
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.movie-details-backdrop img {
+  position: relative;
+  mask-image: linear-gradient(to right, 
+  rgba(0,0,0,0.01) 25%, 
+  rgba(0,0,0,.20) 50%,
+  rgba(0,0,0,.9) 75%,
+  rgba(0,0,0,1) 100% 
+  );
+}

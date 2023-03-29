@@ -4,8 +4,10 @@ import Genres from "./components/genres/genres.component";
 function App() {
   return (
     <div className="App">
-      <h1>Movie API</h1>
-      <Genres />
+      <div className="container">
+        <h1>Movie API</h1>
+        <Genres />
+      </div>
     </div>
   );
 }
