@@ -3,7 +3,6 @@ import React from "react";
 import "./movie-preview.styles.css";
 
 const MoviePreview = ({ movie, configuration, toggleMovieDetails }) => {
-  console.log(configuration);
   return (
     <>
       {configuration && (

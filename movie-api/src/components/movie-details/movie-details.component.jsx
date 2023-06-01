@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
+import MovieDetailsService from "./movie-details.service";
 import "./movie-details.styles.css";
 
 const MovieDetails = ({ movieId, configuration }) => {
@@ -14,34 +14,32 @@ const MovieDetails = ({ movieId, configuration }) => {
     getMovieCredits();
   }, [movieId]);
 
-  const getMovie = () => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}`
-      )
-      .then((response) => {
-        setMovie(response.data);
-      });
+  const getMovie = async () => {
+    try {
+      const movie = await MovieDetailsService.getMovie(movieId);
+      console.log(movie);
+      setMovie(movie);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const getMovieImgs = () => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${process.env.REACT_APP_API_KEY}`
-      )
-      .then((response) => {
-        setMovieImgs(response.data);
-      });
+  const getMovieImgs = async () => {
+    try {
+      const movieImgs = await MovieDetailsService.getMovieImgs(movieId);
+      setMovieImgs(movieImgs);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const getMovieCredits = () => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_API_KEY}`
-      )
-      .then((response) => {
-        setMovieCredits(response.data.cast.slice(0, 3));
-      });
+  const getMovieCredits = async () => {
+    try {
+      const movieCredits = await MovieDetailsService.getMovieCredits(movieId);
+      setMovieCredits(movieCredits);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getReleaseYear = (date) => {
