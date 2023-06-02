@@ -17,7 +17,6 @@ const MovieDetails = ({ movieId, configuration }) => {
   const getMovie = async () => {
     try {
       const movie = await MovieDetailsService.getMovie(movieId);
-      console.log(movie);
       setMovie(movie);
     } catch (error) {
       console.log(error);

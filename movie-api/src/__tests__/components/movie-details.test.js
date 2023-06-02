@@ -3,8 +3,6 @@ import { render, screen } from "@testing-library/react";
 import MovieDetailsService from "../../components/movie-details/movie-details.service";
 import MovieDetails from "../../components/movie-details/movie-details.component";
 
-jest.mock("../../components/movie-details/movie-details.service");
-
 const mockMovie = {
   id: 385687,
   title: "Fast X",
@@ -39,7 +37,20 @@ const mockMovieImgs = {
   ],
 };
 
-const mockMovieCredits = {};
+const mockMovieCredits = [
+  {
+    id: 12835,
+    name: "Vin Diesel",
+  },
+  {
+    id: 17647,
+    name: "Michelle Rodriguez",
+  },
+  {
+    id: 8169,
+    name: "Tyrese Gibson",
+  },
+];
 
 const mockConfiguration = {
   images: {
@@ -65,5 +76,37 @@ describe("Movie Details Component", () => {
     );
 
     const movieTitle = await screen.findByText(mockMovie.title);
+
+    const movieVotes = await screen.findByText(
+      `${mockMovie.vote_average}/10 (${mockMovie.vote_count})`
+    );
+
+    const movieReleaseYear = await screen.findByText(2023);
+
+    const movieRuntime = await screen.findByText(
+      `${mockMovie.runtime / 60} hours`
+    );
+
+    const movieDescription = await screen.findByText(mockMovie.overview);
+
+    mockMovieCredits.forEach(async (actor) => {
+      const name = await screen.findByText(actor.name);
+      expect(name).toBeVisible();
+    });
+
+    mockMovie.genres.forEach(async (genre) => {
+      const genreName = await screen.findByText(genre.name);
+      expect(genreName).toBeVisible();
+    });
+
+    const movieImage = screen.getByRole("img");
+
+    expect(movieTitle).toBeVisible();
+    expect(movieVotes).toBeVisible();
+    expect(movieReleaseYear).toBeVisible();
+    expect(movieRuntime).toBeVisible();
+    expect(movieDescription).toBeVisible();
+    expect(movieImage).toBeVisible();
+    expect(movieImage.src).toContain(mockMovieImgs.backdrops[0].file_path);
   });
 });
