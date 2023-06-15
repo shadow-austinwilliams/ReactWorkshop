@@ -99,7 +99,7 @@ describe("Movie Details Component", () => {
       expect(genreName).toBeVisible();
     });
 
-    const movieImage = screen.getByRole("img");
+    const movieImage = await screen.findByRole("img");
 
     expect(movieTitle).toBeVisible();
     expect(movieVotes).toBeVisible();
